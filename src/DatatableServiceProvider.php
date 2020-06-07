@@ -2,7 +2,9 @@
 
 namespace UiBuilder\Datatable;
 
+use Livewire\Livewire;
 use Illuminate\Support\ServiceProvider;
+use UiBuilder\Datatable\View\Datatable;
 
 class DatatableServiceProvider extends ServiceProvider
 {
@@ -15,19 +17,21 @@ class DatatableServiceProvider extends ServiceProvider
          * Optional methods to load your package assets
          */
         // $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'datatable');
-        // $this->loadViewsFrom(__DIR__.'/../resources/views', 'datatable');
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'datatable');
         // $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
         // $this->loadRoutesFrom(__DIR__.'/routes.php');
 
+        Livewire::component('datatable', Datatable::class);
+        
         if ($this->app->runningInConsole()) {
             $this->publishes([
                 __DIR__.'/../config/config.php' => config_path('datatable.php'),
             ], 'config');
 
             // Publishing the views.
-            /*$this->publishes([
+            $this->publishes([
                 __DIR__.'/../resources/views' => resource_path('views/vendor/datatable'),
-            ], 'views');*/
+            ], 'views');
 
             // Publishing assets.
             /*$this->publishes([
