@@ -19,7 +19,7 @@
         <div>
             <button type="button"
                 wire:click="$emit('createModel')"
-                class="flex justify-center p-2 text-sm text-white transition duration-150 ease-in-out border border-transparent rounded-md bg-default-600 hover:bg-default-500 focus:outline-none focus:border-default-700 focus:shadow-outline-default active:bg-default-700">Create</button>
+                class="flex justify-center p-2 text-sm text-white transition duration-150 ease-in-out border border-transparent rounded-md bg-default-600 hover:bg-default-500 focus:outline-none focus:border-default-700 focus:shadow-outline-default active:bg-default-700">@lang('attributes::action.create')</button>
         </div>
     </div>
 
@@ -48,7 +48,7 @@
                         <td class="flex justify-center text-sm align-middle border-t border-gray-200 border-dashed ">
                             <button
                                 wire:click="$emit('showModel',{{ $row->id }})"
-                                class="flex justify-center p-1 mt-1 text-xs text-white transition duration-150 ease-in-out border border-transparent rounded bg-default-600 hover:bg-default-500 focus:outline-none focus:border-default-700 focus:shadow-outline-default active:bg-default-700">Show</button>
+                                class="flex justify-center p-1 mt-1 text-xs text-white transition duration-150 ease-in-out border border-transparent rounded bg-default-600 hover:bg-default-500 focus:outline-none focus:border-default-700 focus:shadow-outline-default active:bg-default-700">@lang('attributes::action.show')</button>
                         </td>
                     </tr>
                 @endforeach
