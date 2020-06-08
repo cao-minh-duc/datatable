@@ -34,7 +34,7 @@
                     @endforeach
                         <th
                             class="sticky top-0 px-6 py-2 text-xs font-bold tracking-wider text-center text-gray-600 uppercase bg-gray-100 border-b border-gray-200">
-                            Action</th>
+                            @lang('Action')</th>
                 </tr>
             </thead>
             <tbody>
