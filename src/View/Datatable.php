@@ -12,6 +12,10 @@ class Datatable extends Component
 
     public $modelClassname;
 
+    protected $listeners = [
+        'modelsCollectionRefresh' => 'resetPage'
+    ];
+
     public function paginationView()
     {
         return 'livewire::pagination-links';
