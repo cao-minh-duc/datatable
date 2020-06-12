@@ -3,6 +3,8 @@
 namespace UiBuilder\Datatable;
 
 use Livewire\Livewire;
+use UiBuilder\Datatable\View\Table;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 use UiBuilder\Datatable\View\Datatable;
 
@@ -22,7 +24,7 @@ class DatatableServiceProvider extends ServiceProvider
         // $this->loadRoutesFrom(__DIR__.'/routes.php');
 
         Livewire::component('datatable', Datatable::class);
-        
+        Blade::component('table', Table::class);
         if ($this->app->runningInConsole()) {
             $this->publishes([
                 __DIR__.'/../config/config.php' => config_path('datatable.php'),
@@ -58,7 +60,7 @@ class DatatableServiceProvider extends ServiceProvider
 
         // Register the main class to use with the facade
         $this->app->singleton('datatable', function () {
-            return new Datatable;
+            return new \UiBuilder\Datatable\Datatable;
         });
     }
 }

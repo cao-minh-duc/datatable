@@ -23,38 +23,35 @@
         </div>
     </div>
 
-    <div class="overflow-x-auto overflow-y-auto bg-white rounded-lg shadow">
-        <table class="relative w-full whitespace-no-wrap bg-white border-collapse table-auto table-striped">
-            <thead>
-                <tr class="text-left">
-                    @foreach($this->cols as $col)
-                        <th
-                            class="sticky top-0 px-6 py-2 text-xs font-bold tracking-wider text-gray-600 uppercase bg-gray-100 border-b border-gray-200">
-                            {{ $col['name'] }}</th>
-                    @endforeach
-                        <th
-                            class="sticky top-0 px-6 py-2 text-xs font-bold tracking-wider text-center text-gray-600 uppercase bg-gray-100 border-b border-gray-200">
-                            @lang('Action')</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($this->rows as $row)
-                    <tr>
-                        @foreach($this->cols as $col)
-                        <td class="text-sm border-t border-gray-200 border-dashed ">
-                            <span class="flex items-center p-2 text-gray-700">{{ $row->{$col['code']} }}</span>
-                        </td>
-                        @endforeach
-                        <td class="flex justify-center text-sm align-middle border-t border-gray-200 border-dashed ">
-                            <button
-                                wire:click="$emit('showModel',{{ $row->id }})"
-                                class="flex justify-center p-1 mt-1 text-xs text-white transition duration-150 ease-in-out border border-transparent rounded bg-default-600 hover:bg-default-500 focus:outline-none focus:border-default-700 focus:shadow-outline-default active:bg-default-700">@lang('attributes::action.show')</button>
-                        </td>
-                    </tr>
+    <x-table>
+        <thead>
+            <tr class="text-left">
+                @foreach($this->cols as $col)
+                    <th
+                        class="sticky top-0 px-6 py-2 text-xs font-bold tracking-wider text-gray-600 uppercase bg-gray-100 border-b border-gray-200">
+                        {{ $col['name'] }}</th>
                 @endforeach
-            </tbody>
-        </table>
-        
-    </div>
+                    <th
+                        class="sticky top-0 px-6 py-2 text-xs font-bold tracking-wider text-center text-gray-600 uppercase bg-gray-100 border-b border-gray-200">
+                        @lang('Action')</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($this->rows as $row)
+                <tr>
+                    @foreach($this->cols as $col)
+                    <td class="text-sm border-t border-gray-200 border-dashed ">
+                        <span class="flex items-center p-2 text-gray-700">{{ $row->{$col['code']} }}</span>
+                    </td>
+                    @endforeach
+                    <td class="flex justify-center text-sm align-middle border-t border-gray-200 border-dashed ">
+                        <button
+                            wire:click="$emit('showModel',{{ $row->id }})"
+                            class="flex justify-center p-1 mt-1 text-xs text-white transition duration-150 ease-in-out border border-transparent rounded bg-default-600 hover:bg-default-500 focus:outline-none focus:border-default-700 focus:shadow-outline-default active:bg-default-700">@lang('attributes::action.show')</button>
+                    </td>
+                </tr>
+            @endforeach
+        </tbody>
+    </x-table>
     {{ $this->rows->links() }}
 </div>
